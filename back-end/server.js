@@ -1,0 +1,15 @@
+const express = require('express')
+const app  = express()
+const db = require('./config/db')
+db()
+const cors = require('cors')
+app.use(cors())
+app.use(express.json())
+
+ const user = require('./routes/userRoute')
+app.use('/user',user)
+const admin = require('./admin/adminRoute')
+app.use('/admin',admin)
+app.listen(8000,()=>{
+    console.log('server yekhdem')
+})
